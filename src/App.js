@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import AfterLoggedIn from "./Components/AfterLoggedIn";
+import LoginPage from "./Components/Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GuardVisitorForm from "./Components/VisitorManagement";
+import Dashboard from "./Components/Dashboard";
+import VisitTable from "./Components/VisitTable";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<AfterLoggedIn />} />
+        <Route path="/visitors" element={<GuardVisitorForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/VisitTable" element={<VisitTable />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
